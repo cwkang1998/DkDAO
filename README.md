@@ -2,7 +2,7 @@
 
 This is the fork of the original given repository in the buildspace DAO tutorial.
 
-This project is hosted at https://dkdao-cwkang1998.vercel.app
+This project is hosted at https://dkdao.vercel.app/
 
 ### **Welcome 👋**
 
