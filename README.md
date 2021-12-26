@@ -2,14 +2,12 @@
 
 This is the fork of the original given repository in the buildspace DAO tutorial.
 
+This project is hosted at https://dkdao-cwkang1998.vercel.app
+
 ### **Welcome 👋**
 
-To get started with this course, clone this repo and follow these commands:
+To get started:
 
 1. Run `yarn install` at the root of your directory
 2. Run `yarn start` to start the project
 3. Start coding!
-
-### **Questions?**
-
-Have some questions make sure you head over to your [buildspace Dashboard](https://app.buildspace.so/projects/COb520aae3-7925-42f4-a5e7-eaf718933766) and link your Discord account so you can get access to helpful channels and your instructor!
