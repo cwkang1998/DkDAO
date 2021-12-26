@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
+import {UnsupportedChainIdError} from '@web3-react/core'
 
 const sdk = new ThirdwebSDK("rinkeby");
 const bundleDropModule = sdk.getBundleDropModule(
@@ -141,6 +142,27 @@ const App = () => {
       );
   });
 
+  const memberList = useMemo(() => {
+    return memberAddresses.map((address) => {
+      return {
+        address,
+        tokenAmount: ethers.utils.formatUnits(
+          memberTokenAmounts[address] || 0,
+          18
+        ),
+      };
+    });
+  }, [memberAddresses, memberTokenAmounts]);
+
+  if(error instanceof UnsupportedChainIdError){
+    return (
+      <div className="unsupported-network>">
+        <h2>Please connect to Rinkeby</h2>
+        <p>This dapp only works on the Rinkeby network, please switch networks in your connected wallet.</p>
+      </div>
+    )
+  }
+
   const mintNft = () => {
     setIsClaiming(true);
     bundleDropModule
@@ -225,17 +247,7 @@ const App = () => {
     }
   };
 
-  const memberList = useMemo(() => {
-    return memberAddresses.map((address) => {
-      return {
-        address,
-        tokenAmount: ethers.utils.formatUnits(
-          memberTokenAmounts[address] || 0,
-          18
-        ),
-      };
-    });
-  }, [memberAddresses, memberTokenAmounts]);
+  
 
   if (!address) {
     return (
